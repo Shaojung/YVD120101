@@ -101,15 +101,14 @@ public class MainActivity extends AppCompatActivity {
                     String str = result.toString();
                     JSONObject obj = new JSONObject(str);
                     final double temp = obj.getDouble("temp");
+                    final String time = obj.getString("time");
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             tv.setText(String.valueOf(temp));
                             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-                            Date now = new Date();
-                            String strDate = sdf.format(now);
-                            tv2.setText(strDate);
+                            tv2.setText(time);
                             gauge.setValue((int)(temp*10));
                         }
                     });
